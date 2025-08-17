@@ -1,0 +1,10 @@
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: homeassistant
+    restart: always
+    ports:
+      - "8123:8123"             # Home Assistant web UI port
+    volumes:
+      - ~/home/homeserver/homeassistant/config:/config
+    network_mode: host  
