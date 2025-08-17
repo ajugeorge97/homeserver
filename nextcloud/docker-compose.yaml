@@ -1,0 +1,12 @@
+services:
+  nextcloud:
+    image: nextcloud:latest
+    container_name: nextcloud
+    ports:
+      - "8080:80"
+    volumes:
+      - ~/home/homeserver/nextcloud/html:/var/www/html
+      - ~/home/homeserver/nextcloud/data:/var/www/html/data
+      - ~/home/homeserver/nextcloud/config:/var/www/html/config
+      - ~/home/homeserver/nextcloud/apps:/var/www/html/apps
+    restart: always
