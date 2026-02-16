@@ -1,0 +1,9 @@
+apiVersion: v2
+description: Installs pihole in kubernetes
+name: pihole
+# Do not touch will be updated during release
+version: "1.0.0"
+dependencies:
+  - name: pihole
+    repository: https://mojo2600.github.io/pihole-kubernetes/
+    version: 2.35.0
