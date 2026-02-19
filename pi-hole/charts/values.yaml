@@ -6,7 +6,7 @@ pihole:
     enabled: true
     ingressClassName: traefik
     hosts:
-      - "pihole.homelab.local"
+      - ""
   serviceDns:
     loadBalancerIP: 192.168.178.25
     type: LoadBalancer
