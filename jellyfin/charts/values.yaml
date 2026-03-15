@@ -1,0 +1,13 @@
+jellyfin:
+  ingress:
+    enabled: true
+    hosts:
+      - host: jellyfin.lan
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+
+  persistence:
+    media:
+      type: hostPath
+      hostPath: "/data/nextclod_data/data/Aju/files/jellyfin"

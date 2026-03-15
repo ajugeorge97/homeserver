@@ -1,0 +1,9 @@
+apiVersion: v2
+description: Installs pihole in kubernetes
+name: jellyfin
+# Do not touch will be updated during release
+version: "1.0.0"
+dependencies:
+  - name: jellyfin
+    repository: https://jellyfin.github.io/jellyfin-helm
+    version: 2.7.0
