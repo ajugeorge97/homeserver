@@ -1,0 +1,11 @@
+nextcloud:
+  ingress:
+    enabled: true
+  
+  nextcloud:
+    host: nextcloud.lan
+  
+  persistence:
+    enabled: true
+    hostPath: /data/nextclod_data
+    # size: 100Gi ignored

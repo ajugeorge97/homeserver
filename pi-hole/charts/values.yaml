@@ -6,7 +6,9 @@ pihole:
     enabled: true
     ingressClassName: traefik
     hosts:
-      - ""
+      - "pihole.lan"
   serviceDns:
     loadBalancerIP: 192.168.178.25
     type: LoadBalancer
+
+  # DNS1: "8.8.8.8"

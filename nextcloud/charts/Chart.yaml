@@ -1,0 +1,9 @@
+apiVersion: v2
+description: Installs pihole in kubernetes
+name: nextcloud
+# Do not touch will be updated during release
+version: "1.0.0"
+dependencies:
+  - name: nextcloud
+    repository: https://nextcloud.github.io/helm
+    version: 9.0.3
