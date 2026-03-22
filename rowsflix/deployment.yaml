@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rowsflix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rowsflix
+  template:
+    metadata:
+      labels:
+        app: rowsflix
+    spec:
+      containers:
+        - name: rowsflix
+          image: ajugeorge97/rowsflix:1.0.0
+          envFrom:
+            - secretRef:
+                name: rowsflix-secret   # 👈 kubectl create secret generic rowsflix-secret --from-env-file=.env
+          volumeMounts:
+            - name: media
+              mountPath: /media
+      volumes:
+        - name: media
+          hostPath:
+            path: /data/nextclod_data/data/Aju/files/jellyfin
+            type: Directory
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rowsflix-secret
+type: Opaque
