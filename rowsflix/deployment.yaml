@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: rowsflix
-          image: ajugeorge97/rowsflix:1.0.0
+          image: ajugeorge97/rowsflix:1.1.2
           envFrom:
             - secretRef:
                 name: rowsflix-secret   # 👈 kubectl create secret generic rowsflix-secret --from-env-file=.env
