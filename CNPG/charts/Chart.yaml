@@ -1,0 +1,9 @@
+apiVersion: v2
+description: Installs CNPG operator in kubernetes
+name: cnpg
+# Do not touch will be updated during release
+version: "1.0.0"
+dependencies:
+  - name: cloudnative-pg
+    repository: https://cloudnative-pg.github.io/charts
+    version: 0.28.0

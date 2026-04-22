@@ -24,7 +24,7 @@ spec:
       volumes:
         - name: media
           hostPath:
-            path: /data/nextclod_data/data/Aju/files/jellyfin
+            path: /data/jellyfin
             type: Directory
 ---
 apiVersion: v1
