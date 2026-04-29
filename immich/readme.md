@@ -14,4 +14,4 @@ sudo udisksctl power-off -b /dev/sda
 
 backup with restic
 
-restic -r /path/to/immich-repo backup /path/to/immich --progress -v 
+restic -r /path/to/immich-repo backup /path/to/immich --verbose
