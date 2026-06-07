@@ -2,12 +2,12 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: immich-data-pvc
-  namespace: default
+  namespace: {{ .Release.Namespace }}
 spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: local-path
-  volumeName: immich-library-pv
+  volumeName: immich-library-pv-new
   resources:
     requests:
       storage: 100Gi
