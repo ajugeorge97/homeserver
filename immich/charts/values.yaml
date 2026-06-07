@@ -12,7 +12,8 @@ immich:
       containers:
         main:
           image:
-            tag: v2.7.5
+            # renovate: datasource=docker depName=ghcr.io/immich-app/immich-server
+            tag: v2.7.3
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
