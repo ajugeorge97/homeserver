@@ -1,0 +1,10 @@
+apiVersion: v2
+name: homeassistant
+description: Installs Home Assistant in Kubernetes
+type: application
+version: "1.0.0"
+dependencies:
+  - name: home-assistant
+    alias: homeassistant
+    repository: https://pajikos.github.io/home-assistant-helm-chart
+    version: 0.3.62

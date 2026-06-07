@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: homeassistant-config
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: homeassistant-hostpath
+  volumeName: homeassistant-config
+  resources:
+    requests:
+      storage: {{ .Values.persistence.config.size }}

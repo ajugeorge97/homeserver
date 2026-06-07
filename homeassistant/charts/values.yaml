@@ -1,0 +1,33 @@
+persistence:
+  config:
+    hostPath: /data/homeassistant/config
+    type: DirectoryOrCreate
+    size: 5Gi
+
+homeassistant:
+  controller:
+    type: Deployment
+
+  deploymentStrategy: Recreate
+
+  hostNetwork: false
+  dnsPolicy: ClusterFirst
+
+  ingress:
+    enabled: true
+    className: traefik
+    hosts:
+      - host: homeassistant.lan
+        paths:
+          - path: /
+            pathType: Prefix
+
+  resources:
+    requests:
+      memory: 1Gi
+    limits:
+      memory: 2Gi
+
+  persistence:
+    enabled: true
+    existingClaim: homeassistant-config
