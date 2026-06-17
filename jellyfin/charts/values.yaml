@@ -17,10 +17,15 @@ jellyfin:
 
   ingress:
     enabled: true
+    className: traefik
     hosts:
       - host: jellyfin.lan
         paths:
           - path: /
+            pathType: Prefix
+      - host: homelab.taileac0a9.ts.net
+        paths:
+          - path: /jellyfin
             pathType: Prefix
 
   persistence:
