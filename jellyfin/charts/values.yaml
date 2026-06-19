@@ -1,4 +1,8 @@
 jellyfin:
+  image:
+    repository: docker.io/jellyfin/jellyfin
+    tag: "10.11.8"
+
   podSecurityContext:
     runAsNonRoot: true
     runAsUser: 1000
