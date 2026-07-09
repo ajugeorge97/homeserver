@@ -1,14 +1,24 @@
 jellyfin:
+
   image:
     repository: docker.io/jellyfin/jellyfin
     tag: "10.11.11"
 
+  jellyfin:
+    env:
+      - name: LIBVA_DRIVER_NAME
+        value: "iHD"
+      - name: LIBVA_DRIVERS_PATH
+        value: "/usr/lib/jellyfin-ffmpeg/lib/dri"
   podSecurityContext:
     runAsNonRoot: true
     runAsUser: 1000
     runAsGroup: 1000
     fsGroup: 1000
     fsGroupChangePolicy: OnRootMismatch
+    supplementalGroups:
+      - 44
+      - 992
     seccompProfile:
       type: RuntimeDefault
 
@@ -27,10 +37,19 @@ jellyfin:
         paths:
           - path: /
             pathType: Prefix
-      - host: homelab.taileac0a9.ts.net
+      - host: jellyfin.ajugeorge.com
         paths:
-          - path: /jellyfin
+          - path: /
             pathType: Prefix
+  #for hardware acceleration to do: not working yet
+  volumes:
+    - name: dri
+      hostPath:
+        path: /dev/dri
+        type: Directory
+  volumeMounts:
+    - name: dri
+      mountPath: /dev/dri
 
   persistence:
     media:
