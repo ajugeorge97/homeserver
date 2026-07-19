@@ -1,4 +1,5 @@
 pihole:
+  maxUnavailable: 0
   serviceWeb:
     type: ClusterIP
 
@@ -12,3 +13,11 @@ pihole:
     type: LoadBalancer
 
   # DNS1: "8.8.8.8"
+  dnsmasq:
+    enableCustomDnsMasq: true
+
+    additionalHostsEntries:
+      - 100.77.244.43 pihole.lan
+      - 100.77.244.43 nextcloud.lan
+      - 100.77.244.43 immich.lan
+      - 100.77.244.43 homeassistant.lan
