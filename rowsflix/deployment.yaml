@@ -19,13 +19,22 @@ spec:
             - secretRef:
                 name: rowsflix-secret   # 👈 kubectl create secret generic rowsflix-secret --from-env-file=.env
           volumeMounts:
+            - name: sessions
+              mountPath: /app/sessions
             - name: media
               mountPath: /media
       volumes:
+        - name: sessions
+          emptyDir: {}
         - name: media
           hostPath:
             path: /data/jellyfin
             type: Directory
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
 ---
 apiVersion: v1
 kind: Secret
