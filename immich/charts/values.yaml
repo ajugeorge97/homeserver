@@ -13,7 +13,7 @@ immich:
         main:
           image:
             # renovate: datasource=docker depName=ghcr.io/immich-app/immich-server
-            tag: v3.0.2
+            tag: v3.0.3
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
