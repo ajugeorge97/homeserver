@@ -21,3 +21,4 @@ pihole:
       - 100.77.244.43 nextcloud.lan
       - 100.77.244.43 immich.lan
       - 100.77.244.43 homeassistant.lan
+      - 100.77.244.43 vaultwarden.ajugeorge.com

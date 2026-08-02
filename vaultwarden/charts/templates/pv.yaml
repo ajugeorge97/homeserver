@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: vaultwarden-data-pv
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 15Gi
+  local:
+    path: /data/vaultwarden
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - homelab
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-path
+  volumeMode: Filesystem

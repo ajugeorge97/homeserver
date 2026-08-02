@@ -1,0 +1,43 @@
+vaultwarden:
+  domain: "https://vaultwarden.ajugeorge.com"
+  signupsAllowed: false
+  adminRateLimitSeconds: "60"
+  adminRateLimitMaxBurst: "10"
+  podSecurityContext:
+    fsGroup: 1000
+    fsGroupChangePolicy: Always
+    
+  securityContext:
+    allowPrivilegeEscalation: false
+    privileged: false
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsGroup: 1000
+    runAsUser: 1000
+    capabilities:
+      drop:
+        - ALL
+
+
+  storage:
+    existingVolumeClaim:
+      claimName: vaultwarden-data-pvc
+
+  adminToken:
+    existingSecret: vaultwarden-admin
+    existingSecretKey: ADMIN_TOKEN
+
+  ingress:
+    enabled: true
+    class: traefik
+    hostname: "vaultwarden.ajugeorge.com"
+
+    # Disable annotations intended for nginx
+    nginxIngressAnnotations: false
+    tls: true
+    tlsSecret: vaultwarden-tls
+
+    additionalAnnotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"

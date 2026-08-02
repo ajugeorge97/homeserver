@@ -1,0 +1,9 @@
+apiVersion: v2
+description: Installs cert-manager in kubernetes
+name: cert-manager
+# Do not touch will be updated during release
+version: "1.0.0"
+dependencies:
+  - name: cert-manager
+    repository: https://charts.jetstack.io
+    version: 1.12.0

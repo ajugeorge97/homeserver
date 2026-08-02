@@ -1,0 +1,9 @@
+apiVersion: v2
+description: Installs vaultwarden in kubernetes
+name: vaultwarden
+# Do not touch will be updated during release
+version: "1.0.0"
+dependencies:
+  - name: vaultwarden
+    repository: https://guerzon.github.io/vaultwarden
+    version: 0.44.0
