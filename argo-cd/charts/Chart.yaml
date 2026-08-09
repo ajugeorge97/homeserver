@@ -1,0 +1,10 @@
+apiVersion: v2
+description: Installs argo CD in kubernetes
+name: argocd
+# Do not touch will be updated during release
+version: "1.0.0"
+namespace: argo
+dependencies:
+  - name: argo-cd
+    repository: https://argoproj.github.io/argo-helm
+    version: 10.3.0

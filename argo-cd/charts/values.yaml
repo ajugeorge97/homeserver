@@ -1,0 +1,18 @@
+argo-cd:
+  configs:
+    params:
+      server.insecure: true
+  namespaceOverride: "argo"
+  global:
+    domain: argocd.lan
+    nodeSelector:
+      kubernetes.io/hostname: hp-server
+    tolerations:
+      - key: "dedicated"
+        operator: "Equal"
+        value: "experiments"
+        effect: "NoSchedule"
+  server:
+    ingress:
+      enabled: true
+      ingressClassName: traefik
