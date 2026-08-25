@@ -23,13 +23,12 @@ jellyfin:
       type: RuntimeDefault
 
   securityContext:
-    privileged: true
-
-    # allowPrivilegeEscalation: false
-    # capabilities:
-    #   drop:
-    #     - ALL
-    # runAsNonRoot: true
+    privileged: false
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    runAsNonRoot: true
 
   ingress:
     enabled: true
@@ -43,15 +42,6 @@ jellyfin:
         paths:
           - path: /
             pathType: Prefix
-  #for hardware acceleration to do: not working yet
-  volumes:
-    - name: dri
-      hostPath:
-        path: /dev/dri
-        type: Directory
-  volumeMounts:
-    - name: dri
-      mountPath: /dev/dri
 
   persistence:
     media:
@@ -62,6 +52,7 @@ jellyfin:
     requests:
       memory: "2Gi"
       cpu: "500m"
-#    limits:
+    limits:
+      gpu.intel.com/i915: 1
 #      memory: "5Gi"
 #      cpu: "5"
