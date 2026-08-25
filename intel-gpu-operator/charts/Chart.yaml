@@ -1,0 +1,10 @@
+apiVersion: v2
+description: Installs the Intel GPU device plugin for Kubernetes
+name: intel-gpu
+type: application
+# Do not touch will be updated during release
+version: "1.0.0"
+dependencies:
+  - name: intel-device-plugins-gpu
+    repository: https://intel.github.io/helm-charts/
+    version: 0.36.0

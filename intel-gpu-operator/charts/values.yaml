@@ -1,0 +1,15 @@
+intel-device-plugins-gpu:
+  # One allocation is sufficient for the Jellyfin pod. Increase this only
+  # when multiple pods need to share the same integrated GPU.
+  sharedDevNum: 1
+
+  logLevel: 2
+  enableMonitoring: false
+  allocationPolicy: none
+  bypathMode: single
+
+  # Feature Discovery. The plugin will probe the node for Intel GPUs itself.
+  nodeSelector: {}
+  nodeFeatureRule: false
+
+  tolerations: []
