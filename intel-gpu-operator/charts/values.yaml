@@ -9,7 +9,7 @@ intel-device-plugins-gpu:
   bypathMode: single
 
   # Feature Discovery. The plugin will probe the node for Intel GPUs itself.
-  nodeSelector: {}
+  nodeSelector: null #select every node
   nodeFeatureRule: false
 
   tolerations: []
