@@ -12,4 +12,8 @@ intel-device-plugins-gpu:
   nodeSelector: {}
   nodeFeatureRule: false
 
-  tolerations: []
+  tolerations: 
+   - key: dedicated
+     operator: Equal
+     value: experiments
+     effect: NoSchedule
