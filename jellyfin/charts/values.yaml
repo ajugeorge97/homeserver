@@ -23,11 +23,13 @@ jellyfin:
       type: RuntimeDefault
 
   securityContext:
-    allowPrivilegeEscalation: false
-    capabilities:
-      drop:
-        - ALL
-    runAsNonRoot: true
+    privileged: true
+
+    # allowPrivilegeEscalation: false
+    # capabilities:
+    #   drop:
+    #     - ALL
+    # runAsNonRoot: true
 
   ingress:
     enabled: true
