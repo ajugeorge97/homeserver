@@ -9,8 +9,7 @@ intel-device-plugins-gpu:
   bypathMode: single
 
   # Feature Discovery. The plugin will probe the node for Intel GPUs itself.
-  nodeSelector:
-    kubernetes.io/os: linux
+  nodeSelector: {}
   nodeFeatureRule: false
 
   tolerations: []
