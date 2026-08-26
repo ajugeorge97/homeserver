@@ -54,5 +54,5 @@ jellyfin:
       cpu: "500m"
     limits:
       gpu.intel.com/i915: 1
-#      memory: "5Gi"
-#      cpu: "5"
+      memory: "5Gi"
+      cpu: "5"
