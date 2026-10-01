@@ -4,7 +4,7 @@ argo-cd:
       server.insecure: true
   namespaceOverride: "argo"
   global:
-    domain: argocd.lan
+    domain: argocd.ajugeorge.com
     nodeSelector:
       kubernetes.io/hostname: hp-server
     tolerations:
@@ -14,5 +14,11 @@ argo-cd:
         effect: "NoSchedule"
   server:
     ingress:
+      hostname: argocd.ajugeorge.com
+      tls: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
       enabled: true
       ingressClassName: traefik
