@@ -19,7 +19,7 @@ pihole:
     additionalHostsEntries:
       - 100.77.244.43 pihole.lan
       - 100.77.244.43 nextcloud.lan
-      - 100.77.244.43 immich.lan
+      - 100.77.244.43 immich.ajugeorge.com
       - 100.77.244.43 homeassistant.ajugeorge.com
       - 100.77.244.43 vaultwarden.ajugeorge.com
       - 100.77.244.43 jellyfin.lan

@@ -58,11 +58,18 @@ immich:
     ingress:
       main:
         enabled: true
+        tls:
+          - secretName: immich-tls
+            hosts:
+              - immich.ajugeorge.com
         annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.tls: "true"
           # proxy-body-size is set to 0 to remove the body limit on file uploads
           nginx.ingress.kubernetes.io/proxy-body-size: "0"
         hosts:
-          - host: immich.lan
+          - host: immich.ajugeorge.com
             paths:
               - path: "/"
                 service:
