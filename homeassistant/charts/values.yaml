@@ -16,9 +16,13 @@ homeassistant:
 
   ingress:
     enabled: true
+    annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
     className: traefik
     hosts:
-      - host: homeassistant.lan
+      - host: homeassistant.ajugeorge.com
         paths:
           - path: /
             pathType: Prefix
