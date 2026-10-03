@@ -16,6 +16,10 @@ homeassistant:
 
   ingress:
     enabled: true
+    tls:
+      - secretName: homeassistant-tls
+        hosts:
+          - homeassistant.ajugeorge.com
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
