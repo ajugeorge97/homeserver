@@ -6,12 +6,12 @@ argo-cd:
   global:
     domain: argocd.ajugeorge.com
     nodeSelector:
-      kubernetes.io/hostname: hp-server
-    tolerations:
-      - key: "dedicated"
-        operator: "Equal"
-        value: "experiments"
-        effect: "NoSchedule"
+      kubernetes.io/hostname: homelab
+    # tolerations:
+    #   - key: "dedicated"
+    #     operator: "Equal"
+    #     value: "experiments"
+    #     effect: "NoSchedule"
   server:
     ingress:
       hostname: argocd.ajugeorge.com
