@@ -1,0 +1,25 @@
+{{- $releaseName := .Release.Name -}}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ $releaseName }}-pv
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 100Gi
+  local:
+    path: /data/{{ $releaseName }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - homelab
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-path
+  volumeMode: Filesystem

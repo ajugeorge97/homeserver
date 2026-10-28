@@ -1,0 +1,10 @@
+apiVersion: v2
+description: Installs Actual Budget in Kubernetes
+name: actual-budget
+type: application
+# Do not touch will be updated during release
+version: "1.0.0"
+dependencies:
+  - name: actualbudget
+    repository: https://community-charts.github.io/helm-charts
+    version: 1.9.5

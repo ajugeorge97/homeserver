@@ -1,0 +1,22 @@
+actualbudget:
+  replicaCount: 1
+  strategy:
+    type: Recreate
+  persistence:
+    enabled: true
+    existingClaim: actual-budget-pvc
+
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: actualbudget.ajugeorge.com
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+
+    tls:
+      - secretName: actualbudget-tls
+        hosts:
+          - actualbudget.ajugeorge.com

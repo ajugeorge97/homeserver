@@ -1,0 +1,14 @@
+{{- $releaseName := .Release.Name -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ $releaseName }}-pvc
+  namespace: {{ .Release.Namespace }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  volumeName: {{ $releaseName }}-pv
+  resources:
+    requests:
+      storage: 100Gi
