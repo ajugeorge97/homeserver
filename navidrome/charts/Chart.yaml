@@ -5,5 +5,5 @@ name: navidrome
 version: "1.0.0"
 dependencies:
   - name: navidrome
-    repository: https://andrewmichaelsmith.github.io
+    repository: https://andrewmichaelsmith.github.io/navidrome
     version: 0.2.5
