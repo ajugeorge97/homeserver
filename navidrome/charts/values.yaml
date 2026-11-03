@@ -4,6 +4,9 @@ navidrome:
     annotations: {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
+    className: traefik
     hosts:
       - host: navidrome.ajugeorge.com
-        paths: []
+        paths:
+          - path: /
+            pathType: Prefix
