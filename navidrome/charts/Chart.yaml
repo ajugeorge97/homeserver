@@ -1,9 +1,0 @@
-apiVersion: v2
-description: Installs navidrome in kubernetes
-name: navidrome
-# Do not touch will be updated during release
-version: "1.0.0"
-dependencies:
-  - name: navidrome
-    repository: https://andrewmichaelsmith.github.io/navidrome
-    version: 0.2.5
