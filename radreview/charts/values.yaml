@@ -31,12 +31,9 @@ backend:
   
 
 ohif:
-  image: ajugeorge97/radreview-ohif:0.2.9
+  image: ajugeorge97/radreview-ohif:0.2.10
   securityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
     runAsNonRoot: true
-    fsGroup: 1000
     seccompProfile:
       type: RuntimeDefault
   
