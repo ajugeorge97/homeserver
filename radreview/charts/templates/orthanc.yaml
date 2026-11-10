@@ -79,6 +79,9 @@ spec:
               value: Full
             - name: ORTHANC__DICOM_WEB__SERIES_METADATA
               value: Full
+            # to runas nonroot this is required, if it makes problem look other alternative solution to generate /etc/hostid
+            - name: GENERATE_HOST_ID_IF_MISSING
+              value: "false"
           volumeMounts:
             - name: data
               mountPath: /var/lib/orthanc/db
