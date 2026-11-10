@@ -1,0 +1,5 @@
+apiVersion: v2
+description: Installs radreview in kubernetees
+name: radreview
+# Do not touch will be updated during release
+version: "1.0.0"

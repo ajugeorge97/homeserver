@@ -1,0 +1,1 @@
+helm template radreview ./ > out.yaml

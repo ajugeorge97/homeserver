@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+  namespace: {{ .Values.global.namespace }}
+data:
+  OHIF_ROOT: /viewer
+  DATABASE_STARTUP_TIMEOUT_SECONDS: "60"
+  ORTHANC_URL: http://orthanc:8042
+  ORTHANC_COOKIE_SECURE: "false"
+  VIEWER_TOKEN_LIFETIME_SECONDS: "28800"
+  PROJECT_SETTINGS_ROOT: /var/lib/radreview/project-settings
+  ADMIN_DISPLAY_NAME: Administrator

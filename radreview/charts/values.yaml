@@ -1,0 +1,5 @@
+global:
+  namespace: radreview
+
+frontend:
+  image: ajugeorge97/radreview-frontend:0.2.12
