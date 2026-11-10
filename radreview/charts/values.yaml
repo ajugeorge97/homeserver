@@ -3,7 +3,7 @@ global:
 
 frontend:
   replicas: 1
-  image: ajugeorge97/radreview-frontend:0.2.12
+  image: ajugeorge97/radreview-frontend:0.2.20
   securityContext:
     runAsUser: 1000
     runAsGroup: 1000
