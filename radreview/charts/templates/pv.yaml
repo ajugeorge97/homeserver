@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: {{ .Release.Name}}-pv
+  name: {{ printf "%s-pv" .Release.Name | quote }}
   annotations:
     helm.sh/resource-policy: keep
 spec:

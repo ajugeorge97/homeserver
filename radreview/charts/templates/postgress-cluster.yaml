@@ -1,0 +1,18 @@
+{{- if .Values.postgress.create }}
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ printf "%s-postgres" .Release.Name | quote }}
+  namespace: {{ .Values.global.namespace | quote }}
+  labels:
+    app.kubernetes.io/name: postgres
+    app.kubernetes.io/part-of: {{ .Release.Name | quote }}
+spec:
+  instances: {{ .Values.postgress.instances }}
+  bootstrap:
+    initdb:
+      database: {{ .Release.Name | quote }}
+      owner: {{ .Release.Name | quote }}
+  storage:
+    size: {{ .Values.postgress.storage.size | quote }}
+{{- end }}

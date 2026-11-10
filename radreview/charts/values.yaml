@@ -40,3 +40,8 @@ ohif:
     seccompProfile:
       type: RuntimeDefault
   
+postgress:
+  create: true
+  instances: 1
+  storage:
+    size: 20Gi

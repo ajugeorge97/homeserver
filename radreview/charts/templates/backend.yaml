@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: {{ .Values.global.namespace}}
+  namespace: {{ .Values.global.namespace | quote }}
   labels:
     app.kubernetes.io/name: backend
-    app.kubernetes.io/part-of: {{ .Release.Name}}
+    app.kubernetes.io/part-of: {{ .Release.Name | quote }}
 spec:
   replicas: 1
   strategy:
@@ -17,26 +17,26 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: backend
-        app.kubernetes.io/part-of: {{ .Release.Name}}
+        app.kubernetes.io/part-of: {{ .Release.Name | quote }}
     spec:
-      serviceAccountName: {{ .Release.Name}}
+      serviceAccountName: {{ .Release.Name | quote }}
       containers:
         - name: backend
-          image: {{ .Values.backend.image }}
+          image: {{ .Values.backend.image | quote }}
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 8000
           envFrom:
             - configMapRef:
-                name: {{ .Release.Name}}-config
+                name: {{ printf "%s-config" .Release.Name | quote }}
             - secretRef:
-                name: {{ .Release.Name}}-secrets
+                name: {{ printf "%s-secrets" .Release.Name | quote }}
           env:
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name}}-postgres-app
+                  name: {{ printf "%s-postgres-app" .Release.Name | quote }}
                   key: uri
           readinessProbe:
             httpGet:
@@ -79,10 +79,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend
-  namespace: {{ .Release.Name}}
+  namespace: {{ .Release.Name | quote }}
   labels:
     app.kubernetes.io/name: backend
-    app.kubernetes.io/part-of: {{ .Release.Name}}
+    app.kubernetes.io/part-of: {{ .Release.Name | quote }}
 spec:
   selector:
     app.kubernetes.io/name: backend

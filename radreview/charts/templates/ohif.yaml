@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ohif
-  namespace: {{ .Values.global.namespace}}
+  namespace: {{ .Values.global.namespace | quote }}
   labels:
     app.kubernetes.io/name: ohif
-    app.kubernetes.io/part-of: {{ .Release.Name }}
+    app.kubernetes.io/part-of: {{ .Release.Name | quote }}
 spec:
   replicas: 1
   selector:
@@ -15,11 +15,11 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: ohif
-        app.kubernetes.io/part-of: {{ .Release.Name }}
+        app.kubernetes.io/part-of: {{ .Release.Name | quote }}
     spec:
       containers:
         - name: ohif
-          image: {{ .Values.ohif.image }}
+          image: {{ .Values.ohif.image | quote }}
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -52,10 +52,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ohif
-  namespace: {{ .Values.global.namespace}}
+  namespace: {{ .Values.global.namespace | quote }}
   labels:
     app.kubernetes.io/name: ohif
-    app.kubernetes.io/part-of: {{ .Release.Name }}
+    app.kubernetes.io/part-of: {{ .Release.Name | quote }}
 spec:
   selector:
     app.kubernetes.io/name: ohif

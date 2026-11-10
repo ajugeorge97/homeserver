@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-frontend
-  namespace: {{ .Values.global.namespace }}
+  name: {{ printf "%s-frontend" .Release.Name | quote }}
+  namespace: {{ .Values.global.namespace | quote }}
   labels:
     app.kubernetes.io/name: frontend
-    app.kubernetes.io/part-of: {{ .Release.Name }}
+    app.kubernetes.io/part-of: {{ .Release.Name | quote }}
 spec:
   replicas: {{ .Values.frontend.replicas }}
   selector:
@@ -15,18 +15,18 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: frontend
-        app.kubernetes.io/part-of: {{ .Release.Name }}
+        app.kubernetes.io/part-of: {{ .Release.Name | quote }}
     spec:
-      serviceAccountName: {{ .Release.Name }}
+      serviceAccountName: {{ .Release.Name | quote }}
       containers:
         - name: frontend
-          image: {{ .Values.frontend.image }}
+          image: {{ .Values.frontend.image | quote }}
           imagePullPolicy: IfNotPresent
           env:
             - name: OHIF_ROOT
               valueFrom:
                 configMapKeyRef:
-                  name: {{ .Release.Name }}-config
+                  name: {{ printf "%s-config" .Release.Name | quote }}
                   key: OHIF_ROOT
           ports:
             - name: http
@@ -59,10 +59,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend
-  namespace: {{ .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace | quote }}
   labels:
     app.kubernetes.io/name: frontend
-    app.kubernetes.io/part-of: {{ .Release.Name }}
+    app.kubernetes.io/part-of: {{ .Release.Name | quote }}
 spec:
   selector:
     app.kubernetes.io/name: frontend

@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-config
-  namespace: {{ .Values.global.namespace }}
+  name: {{ printf "%s-config" .Release.Name | quote }}
+  namespace: {{ .Values.global.namespace | quote }}
 data:
   OHIF_ROOT: /viewer
   DATABASE_STARTUP_TIMEOUT_SECONDS: "60"
