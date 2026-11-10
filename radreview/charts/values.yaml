@@ -1,5 +1,12 @@
 global:
   namespace: radreview
+persistance:
+  create: true
+  storageClass: local-path
+  volumeName: radreview-pv
+  resources:
+    requests:
+      storage: 1Gi
 
 frontend:
   replicas: 1
@@ -11,6 +18,17 @@ frontend:
     fsGroup: 1000
     seccompProfile:
       type: RuntimeDefault
+
+backend:
+  image: ajugeorge97/radreview-backend:0.2.11
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
+  
 
 ohif:
   image: ajugeorge97/radreview-ohif:0.2.9

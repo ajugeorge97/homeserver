@@ -1,0 +1,19 @@
+{{- if .Values.persistance.create }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: project-settings
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app.kubernetes.io/name: backend
+    app.kubernetes.io/part-of: {{ .Release.Name }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+
+  storageClassName: {{ .Values.persistance.storageClass | quote }}
+  volumeName: {{ .Values.persistance.volumeName | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.persistance.resources.requests.storage | quote }}
+{{- end }}
