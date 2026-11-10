@@ -2,4 +2,23 @@ global:
   namespace: radreview
 
 frontend:
+  replicas: 1
   image: ajugeorge97/radreview-frontend:0.2.12
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
+
+ohif:
+  image: ajugeorge97/radreview-ohif:0.2.9
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
+  
