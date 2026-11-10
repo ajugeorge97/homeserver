@@ -70,7 +70,7 @@ spec:
         - name: project-settings
           persistentVolumeClaim:
             claimName: project-settings
-      {{- with .Values.frontend.securityContext }}
+      {{- with .Values.backend.securityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}

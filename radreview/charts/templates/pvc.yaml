@@ -10,7 +10,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-
   storageClassName: {{ .Values.persistance.storageClass | quote }}
   volumeName: {{ .Values.persistance.volumeName | quote }}
   resources:

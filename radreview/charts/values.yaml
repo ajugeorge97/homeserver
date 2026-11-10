@@ -39,3 +39,12 @@ postgress:
   instances: 1
   storage:
     size: 20Gi
+
+orthanc:
+  persistence:
+    existingClaim: project-settings
+    subPath: "orthanc_data"
+  securityContext:
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
