@@ -17,7 +17,7 @@ frontend:
       type: RuntimeDefault
 
 backend:
-  image: ajugeorge97/radreview-backend:0.2.11
+  image: ajugeorge97/radreview-backend:0.2.21
   securityContext:
     runAsUser: 1000
     runAsGroup: 1000
