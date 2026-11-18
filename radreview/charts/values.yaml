@@ -20,12 +20,8 @@ frontend:
       type: RuntimeDefault
 
 backend:
-<<<<<<< Updated upstream
-  image: ajugeorge97/radreview-backend:0.2.21
-=======
   replicas: 1
-  image: ajugeorge97/radreview-backend:0.2.11
->>>>>>> Stashed changes
+  image: ajugeorge97/radreview-backend:0.2.21
   securityContext:
     runAsUser: 1000
     runAsGroup: 1000
