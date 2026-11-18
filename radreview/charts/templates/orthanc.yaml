@@ -28,7 +28,7 @@ metadata:
     app.kubernetes.io/part-of: {{ .Release.Name | quote }}
 spec:
   serviceName: orthanc
-  replicas: 1
+  replicas: {{ ternary 0 .Values.orthanc.replicas .Values.suspended }}
   selector:
     matchLabels:
       app.kubernetes.io/name: orthanc

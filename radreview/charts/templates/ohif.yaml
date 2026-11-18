@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: ohif
     app.kubernetes.io/part-of: {{ .Release.Name | quote }}
 spec:
-  replicas: 1
+  replicas: {{ ternary 0 .Values.ohif.replicas .Values.suspended }}
   selector:
     matchLabels:
       app.kubernetes.io/name: ohif

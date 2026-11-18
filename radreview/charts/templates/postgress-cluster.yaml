@@ -4,6 +4,8 @@ kind: Cluster
 metadata:
   name: {{ printf "%s-postgres" .Release.Name | quote }}
   namespace: {{ .Values.global.namespace | quote }}
+  annotations:
+    cnpg.io/hibernation: {{ ternary "on" "off" .Values.suspended | quote }}
   labels:
     app.kubernetes.io/name: postgres
     app.kubernetes.io/part-of: {{ .Release.Name | quote }}

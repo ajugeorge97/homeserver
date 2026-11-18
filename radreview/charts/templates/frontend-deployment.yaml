@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: frontend
     app.kubernetes.io/part-of: {{ .Release.Name | quote }}
 spec:
-  replicas: {{ .Values.frontend.replicas }}
+  replicas: {{ ternary 0 .Values.frontend.replicas .Values.suspended }}
   selector:
     matchLabels:
       app.kubernetes.io/name: frontend

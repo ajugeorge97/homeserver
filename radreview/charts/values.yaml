@@ -1,3 +1,6 @@
+# Stop RadReview workloads and hibernate PostgreSQL while retaining storage.
+suspended: true
+
 global:
   namespace: radreview
 persistance:
@@ -17,7 +20,12 @@ frontend:
       type: RuntimeDefault
 
 backend:
+<<<<<<< Updated upstream
   image: ajugeorge97/radreview-backend:0.2.21
+=======
+  replicas: 1
+  image: ajugeorge97/radreview-backend:0.2.11
+>>>>>>> Stashed changes
   securityContext:
     runAsUser: 1000
     runAsGroup: 1000
@@ -28,6 +36,7 @@ backend:
   
 
 ohif:
+  replicas: 1
   image: ajugeorge97/radreview-ohif:0.2.10
   securityContext:
     runAsNonRoot: true
@@ -41,6 +50,7 @@ postgress:
     size: 20Gi
 
 orthanc:
+  replicas: 1
   persistence:
     existingClaim: project-settings
     subPath: "orthanc_data"
