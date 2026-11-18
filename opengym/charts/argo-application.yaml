@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: opengym
+  namespace: argo
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/RobbertSC/openGym.git
+      targetRevision: main
+      path: helm
+      helm:
+        valueFiles:
+          - $values/opengym/charts/values.yaml
+    - repoURL: https://github.com/ajugeorge97/homeserver.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: opengym
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
