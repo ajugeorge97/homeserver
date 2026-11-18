@@ -38,6 +38,20 @@ spec:
         app.kubernetes.io/name: orthanc
         app.kubernetes.io/part-of: {{ .Release.Name | quote }}
     spec:
+      initContainers:
+        - name: init-volume-permissions
+          image: alpine:3
+          command:
+            - sh
+            - -c
+            - chown -R 999:999 /var/lib/orthanc/db
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+            runAsNonRoot: false
+          volumeMounts:
+            - name: orthanc-storage
+              mountPath: /var/lib/orthanc/db
       serviceAccountName: {{ .Release.Name | quote }}
       terminationGracePeriodSeconds: 30
       volumes:
