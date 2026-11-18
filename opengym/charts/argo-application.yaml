@@ -15,6 +15,9 @@ spec:
     - repoURL: https://github.com/ajugeorge97/homeserver.git
       targetRevision: main
       ref: values
+    - repoURL: https://github.com/ajugeorge97/homeserver.git
+      targetRevision: main
+      path: opengym/charts/storage
   destination:
     server: https://kubernetes.default.svc
     namespace: opengym

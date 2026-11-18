@@ -22,5 +22,4 @@ api:
 
 persistence:
   data:
-    storageClass: local-path
-    size: 2Gi
+    existingClaim: opengym-data-pvc
