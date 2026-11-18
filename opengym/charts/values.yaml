@@ -18,7 +18,7 @@ ingress:
 api:
   env:
     RP_ID: "opengym.ajugeorge.com"
-    ORIGIN: https://"opengym.ajugeorge.com"
+    ORIGIN: "https://opengym.ajugeorge.com"
 
 persistence:
   data:
