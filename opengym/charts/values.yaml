@@ -1,8 +1,14 @@
+podSecurityContext:
+  fsGroup: 1001
+
 securityContext:
   capabilities:
     drop:
-    - ALL
+      - ALL
   runAsNonRoot: true
+  # The chart shares this context across containers. nginx owns its writable paths as UID 1001.
+  runAsUser: 1001
+  runAsGroup: 1001
 
 ingress:
   enabled: true
@@ -22,6 +28,8 @@ ingress:
         - "opengym.ajugeorge.com"
 
 api:
+  image:
+    tag: 1.4.3
   env:
     RP_ID: "opengym.ajugeorge.com"
     ORIGIN: "https://opengym.ajugeorge.com"
@@ -30,9 +38,6 @@ persistence:
   data:
     existingClaim: opengym-data-pvc
 
-api:
-  image:
-    tag: 1.4.3
 web:
   image:
     tag: 1.4.3
