@@ -1,5 +1,5 @@
 # Stop RadReview workloads and hibernate PostgreSQL while retaining storage.
-suspended: true
+suspended: false
 
 global:
   namespace: radreview
