@@ -44,7 +44,7 @@ spec:
           command:
             - sh
             - -c
-            - chown -R 999:999 /var/lib/orthanc/db
+            - {{ printf "chown -R %v:%v /var/lib/orthanc/db" .Values.orthanc.securityContext.runAsUser .Values.orthanc.securityContext.runAsGroup | quote }}
           securityContext:
             runAsUser: 0
             runAsGroup: 0

@@ -51,7 +51,8 @@ orthanc:
     existingClaim: project-settings
     subPath: "orthanc_data"
   securityContext:
-    runAsUser: 1000
+    runAsUser: 999
+    runAsGroup: 999
     runAsNonRoot: true
     seccompProfile:
       type: RuntimeDefault
