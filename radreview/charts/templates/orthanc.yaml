@@ -50,7 +50,7 @@ spec:
             runAsGroup: 0
             runAsNonRoot: false
           volumeMounts:
-            - name: orthanc-storage
+            - name: data
               mountPath: /var/lib/orthanc/db
       serviceAccountName: {{ .Release.Name | quote }}
       terminationGracePeriodSeconds: 30
