@@ -29,3 +29,10 @@ api:
 persistence:
   data:
     existingClaim: opengym-data-pvc
+
+api:
+  image:
+    tag: 1.4.3
+web:
+  image:
+    tag: 1.4.3
