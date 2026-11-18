@@ -1,5 +1,5 @@
 # Stop RadReview workloads and hibernate PostgreSQL while retaining storage.
-suspended: true
+suspended: false
 
 global:
   namespace: radreview
@@ -13,6 +13,12 @@ persistance:
 
 frontend:
   replicas: 1
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts: radreview.ajugeorge.com
   image: ajugeorge97/radreview-frontend:0.2.21
   securityContext:
     runAsNonRoot: true

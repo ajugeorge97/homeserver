@@ -70,3 +70,33 @@ spec:
     - name: http
       port: 80
       targetPort: http
+
+{{- if .Values.frontend.ingress.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  namespace: {{ .Values.global.namespace | quote }}
+  {{- with .Values.frontend.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  ingressClassName: {{ .Values.frontend.ingress.ingressClassName | quote }}
+  rules:
+    - host: {{ .Values.frontend.ingress.hosts | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - {{ .Values.frontend.ingress.hosts | quote }}
+      secretName: frontend-tls
+{{- end }}
