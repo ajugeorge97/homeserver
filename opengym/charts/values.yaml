@@ -1,3 +1,9 @@
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  runAsNonRoot: true
+
 ingress:
   enabled: true
   className: traefik
