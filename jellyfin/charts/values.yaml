@@ -47,6 +47,7 @@ jellyfin:
     media:
       type: hostPath
       hostPath: "/data/jellyfin"
+      readOnly: false
 
   resources:
     requests:
